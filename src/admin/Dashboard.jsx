@@ -22,25 +22,27 @@ export default function Dashboard() {
   }, [])
 
   const cards = [
-    { label: 'Doctor profiles', value: counts.doctors, to: '/admin/doctors' },
-    { label: 'Offers', value: counts.offers, to: '/admin/offers' },
-    { label: 'Gallery photos', value: counts.photos, to: '/admin/gallery' }
+    { label: 'Doctor profiles', desc: 'Add or edit your dentists', value: counts.doctors, to: '/admin/doctors' },
+    { label: 'Offers', desc: 'Promotions shown on the site', value: counts.offers, to: '/admin/offers' },
+    { label: 'Gallery photos', desc: 'Photos of the clinic', value: counts.photos, to: '/admin/gallery' },
+    { label: 'Site Settings', desc: 'Logo, contact info, hours & more', value: '⚙', to: '/admin/settings' }
   ]
 
   return (
     <div>
       <h1 className="text-2xl text-teal-900 mb-1">Welcome back</h1>
-      <p className="text-ink/60 mb-8">Manage what appears on the public Kantha Dental Care website.</p>
+      <p className="text-ink/60 mb-8">Manage what appears on the public website from here.</p>
 
-      <div className="grid sm:grid-cols-3 gap-5">
+      <div className="grid sm:grid-cols-2 gap-5">
         {cards.map((c) => (
           <Link
             key={c.label}
             to={c.to}
-            className="border border-teal-800/10 rounded-xl p-6 bg-white/60 hover:border-teal-800/30 transition-colors"
+            className="border border-teal-800/10 rounded-2xl p-6 bg-white/60 hover:border-teal-700 hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
           >
             <div className="text-3xl font-display text-teal-900 mb-1">{c.value}</div>
-            <div className="text-sm text-ink/60">{c.label}</div>
+            <div className="text-sm font-medium text-teal-800">{c.label}</div>
+            <div className="text-xs text-ink/50 mt-1">{c.desc}</div>
           </Link>
         ))}
       </div>

@@ -1,28 +1,36 @@
-export const clinic = {
-  name: 'Kantha Dental Care',
+// Fallback defaults, used only until the admin sets real values in Site Settings
+// (or if the site_settings row hasn't been created in Supabase yet).
+export const defaultClinic = {
+  business_name: 'Kantha Dental Care',
   phone: '07299044555',
-  phoneDisplay: '072990 44555',
-  addressLines: [
-    'No. 1/1A, 4th Lane, Thiruvottiyur High Rd,',
-    'Tondiarpet, Chennai, Tamil Nadu 600081'
-  ],
-  addressOneLine:
-    'No. 1/1A, 4th Lane, Thiruvottiyur High Rd, Tondiarpet, Chennai, Tamil Nadu 600081',
+  email: '',
+  address: 'No. 1/1A, 4th Lane, Thiruvottiyur High Rd, Tondiarpet, Chennai, Tamil Nadu 600081',
   hours: [
     { day: 'Monday – Saturday', time: '9:30 AM – 1:30 PM & 5:00 PM – 9:00 PM' },
     { day: 'Sunday', time: '10:00 AM – 1:00 PM (By appointment)' }
   ],
-  mapEmbedSrc:
-    'https://www.google.com/maps?q=' +
-    encodeURIComponent(
-      'No. 1/1A, 4th Lane, Thiruvottiyur High Rd, Tondiarpet, Chennai, Tamil Nadu 600081'
-    ) +
-    '&output=embed',
-  mapLink:
-    'https://www.google.com/maps/search/?api=1&query=' +
-    encodeURIComponent(
-      'No. 1/1A, 4th Lane, Thiruvottiyur High Rd, Tondiarpet, Chennai, Tamil Nadu 600081'
-    )
+  social_links: [],
+  logo_url: null,
+  hero_bg_url: null,
+  hero_bg_opacity: 25,
+  hero_heading: 'Dental care that puts your whole family at ease.',
+  hero_subtext:
+    'From routine check-ups to root canals, braces and implants — we bring modern treatment and honest advice to your neighbourhood.'
+}
+
+export function formatPhoneDisplay(phone) {
+  if (!phone) return ''
+  const digits = phone.replace(/\D/g, '')
+  if (digits.length === 10) return `${digits.slice(0, 5)} ${digits.slice(5)}`
+  return phone
+}
+
+export function mapEmbedSrc(address) {
+  return 'https://www.google.com/maps?q=' + encodeURIComponent(address || '') + '&output=embed'
+}
+
+export function mapLink(address) {
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address || '')
 }
 
 export const services = [

@@ -1,7 +1,11 @@
-import { services, clinic } from '../lib/clinicInfo'
+import { services } from '../lib/clinicInfo'
+import { useSiteSettings } from '../lib/useSiteSettings'
 import Reveal from '../components/Reveal'
+import { PhoneIcon } from '../components/icons'
 
 export default function Services() {
+  const { settings } = useSiteSettings()
+
   return (
     <div>
       <section className="bg-teal-900 text-sand py-14">
@@ -33,8 +37,9 @@ export default function Services() {
               <h2 className="text-2xl text-teal-900 mb-1">Not sure which treatment you need?</h2>
               <p className="text-ink/60">Call us and describe your concern — we'll guide you to the right care.</p>
             </div>
-            <a href={`tel:${clinic.phone}`} className="btn-primary whitespace-nowrap">
-              Call {clinic.phoneDisplay}
+            <a href={`tel:${settings.phone}`} className="btn-primary whitespace-nowrap inline-flex items-center gap-2">
+              <PhoneIcon className="w-4 h-4" />
+              Call Now
             </a>
           </div>
         </Reveal>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { clinic } from '../lib/clinicInfo'
 import { useSiteSettings } from '../lib/useSiteSettings'
+import { PhoneIcon } from './icons'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -18,17 +18,19 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-sand/90 backdrop-blur border-b border-teal-800/10">
       <div className="container-page flex items-center justify-between h-16">
-        <NavLink to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+        <NavLink to="/" className="flex items-center gap-2 min-w-0" onClick={() => setOpen(false)}>
           {settings.logo_url ? (
             <span className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
-              <img src={settings.logo_url} alt="Kantha Dental Care logo" className="w-full h-full object-cover" />
+              <img src={settings.logo_url} alt={`${settings.business_name} logo`} className="w-full h-full object-cover" />
             </span>
           ) : (
-            <span className="w-8 h-8 rounded-xl bg-teal-800 flex items-center justify-center text-gold-400 font-display font-semibold">
-              K
+            <span className="w-8 h-8 rounded-xl bg-teal-800 flex items-center justify-center text-gold-400 font-display font-semibold flex-shrink-0">
+              {settings.business_name?.[0] || 'K'}
             </span>
           )}
-          <span className="font-display text-lg text-teal-900 leading-tight">Kantha Dental Care</span>
+          <span className="font-display text-lg text-teal-900 leading-tight truncate">
+            {settings.business_name}
+          </span>
         </NavLink>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -47,8 +49,13 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a href={`tel:${clinic.phone}`} className="hidden md:inline-flex btn-primary text-sm px-5 py-2.5">
-          Call {clinic.phoneDisplay}
+        <a
+          href={`tel:${settings.phone}`}
+          aria-label={`Call ${settings.business_name}`}
+          title="Call us"
+          className="hidden md:inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gold-500 text-teal-950 hover:bg-gold-400 transition-colors"
+        >
+          <PhoneIcon className="w-5 h-5" />
         </a>
 
         <button
@@ -84,8 +91,12 @@ export default function Navbar() {
                 {l.label}
               </NavLink>
             ))}
-            <a href={`tel:${clinic.phone}`} className="btn-primary mt-4 mb-2">
-              Call {clinic.phoneDisplay}
+            <a
+              href={`tel:${settings.phone}`}
+              className="btn-primary mt-4 mb-2 inline-flex items-center justify-center gap-2"
+            >
+              <PhoneIcon className="w-4 h-4" />
+              Call us
             </a>
           </nav>
         </div>

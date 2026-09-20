@@ -99,17 +99,22 @@ Supabase — no code changes needed.
 
 ## 6. If you already set up Supabase before this update
 
-This update added a `site_settings` table (for the logo and homepage background photo). If
-you already ran `supabase/schema.sql` once, don't re-run the whole file — instead run
-`supabase/update_2_site_settings.sql` in the SQL Editor, which only adds the new table.
+This update added editable business info. Run these in the SQL Editor, **in order**, only for
+the ones you haven't run yet:
+
+1. `supabase/update_2_site_settings.sql` — adds the `site_settings` table (logo + hero photo).
+   Skip this if you already ran it before.
+2. `supabase/update_3_business_info.sql` — adds business name, phone, email, address, hours,
+   social links and homepage headline text, pre-filled with your current details.
+
+If you're setting up Supabase for the very first time, just run `supabase/schema.sql` — it
+already includes everything.
 
 ## 7. Customizing clinic details
 
-Business name, phone number, address, hours and the Google Map are all defined in one place:
-
-```
-src/lib/clinicInfo.js
-```
+Business name, phone, email, address, hours, social links, the homepage headline, logo and
+homepage background photo are now all editable from **Site Settings** in the admin panel
+(`/admin/settings`) — no code changes needed.
 
 The list of services shown on the Services page is in the same file — edit the `services` array
 to add, remove or reword treatments.

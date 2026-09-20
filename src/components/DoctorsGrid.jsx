@@ -1,7 +1,7 @@
 import Reveal from './Reveal'
 import DoctorCard from './DoctorCard'
 
-export default function DoctorsGrid({ doctors }) {
+export default function DoctorsGrid({ doctors, compact = false }) {
   const columns = Math.max(1, Math.min(doctors.length, 3))
 
   return (
@@ -11,7 +11,7 @@ export default function DoctorsGrid({ doctors }) {
     >
       {doctors.map((d, i) => (
         <Reveal key={d.id} delay={i * 80}>
-          <DoctorCard doctor={d} />
+          <DoctorCard doctor={d} compact={compact} />
         </Reveal>
       ))}
     </div>

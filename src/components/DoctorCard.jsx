@@ -1,4 +1,4 @@
-export default function DoctorCard({ doctor }) {
+export default function DoctorCard({ doctor, compact = false }) {
   return (
     <div
       className="group rounded-2xl bg-white/70 border-2 border-teal-800/10 p-3 sm:p-6 text-center
@@ -22,8 +22,8 @@ export default function DoctorCard({ doctor }) {
       {doctor.specialty && (
         <p className="text-[10px] sm:text-sm text-ink/70 mt-1 sm:mt-2 clamp-2 sm:line-clamp-none">{doctor.specialty}</p>
       )}
-      {doctor.bio && (
-        <p className="hidden sm:block text-sm text-ink/60 mt-2 leading-relaxed clamp-2">{doctor.bio}</p>
+      {!compact && doctor.bio && (
+        <p className="text-[10px] sm:text-sm text-ink/60 mt-2 leading-relaxed">{doctor.bio}</p>
       )}
     </div>
   )

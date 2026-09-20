@@ -1,15 +1,20 @@
-import { clinic } from '../lib/clinicInfo'
+import { useSiteSettings } from '../lib/useSiteSettings'
+import { mapEmbedSrc, mapLink } from '../lib/clinicInfo'
 import Reveal from '../components/Reveal'
+import SocialLinks from '../components/SocialLinks'
+import { PhoneIcon, MailIcon } from '../components/icons'
 
 export default function Contact() {
+  const { settings } = useSiteSettings()
+
   return (
     <div>
       <section className="bg-teal-900 text-sand py-14">
         <Reveal className="container-page">
           <p className="text-gold-400 text-sm font-semibold mb-3">Contact & Location</p>
-          <h1 className="text-4xl mb-4 text-sand">Visit Kantha Dental Care</h1>
+          <h1 className="text-4xl mb-4 text-sand">Visit {settings.business_name}</h1>
           <p className="text-sand/80 max-w-prose">
-            Easy to reach on Thiruvottiyur High Road — call ahead or walk in during clinic hours.
+            Call ahead or walk in during clinic hours — we're easy to find.
           </p>
         </Reveal>
       </section>
@@ -18,24 +23,31 @@ export default function Contact() {
         <Reveal>
           <div className="mb-8">
             <h2 className="text-xl text-teal-900 mb-2">Address</h2>
-            <p className="text-ink/70 leading-relaxed">
-              {clinic.addressLines.map((line) => (
-                <span key={line} className="block">{line}</span>
-              ))}
-            </p>
+            <p className="text-ink/70 leading-relaxed">{settings.address}</p>
           </div>
 
           <div className="mb-8">
             <h2 className="text-xl text-teal-900 mb-2">Phone</h2>
-            <a href={`tel:${clinic.phone}`} className="text-teal-700 text-lg hover:text-teal-600">
-              {clinic.phoneDisplay}
+            <a href={`tel:${settings.phone}`} className="flex items-center gap-2 text-teal-700 text-lg hover:text-teal-600">
+              <PhoneIcon className="w-5 h-5" />
+              {settings.phone}
             </a>
           </div>
+
+          {settings.email && (
+            <div className="mb-8">
+              <h2 className="text-xl text-teal-900 mb-2">Email</h2>
+              <a href={`mailto:${settings.email}`} className="flex items-center gap-2 text-teal-700 text-lg hover:text-teal-600">
+                <MailIcon className="w-5 h-5" />
+                {settings.email}
+              </a>
+            </div>
+          )}
 
           <div className="mb-8">
             <h2 className="text-xl text-teal-900 mb-2">Clinic hours</h2>
             <ul className="text-ink/70 space-y-1">
-              {clinic.hours.map((h) => (
+              {settings.hours.map((h) => (
                 <li key={h.day} className="flex justify-between max-w-sm border-b border-teal-800/10 py-2">
                   <span>{h.day}</span>
                   <span className="text-ink/60">{h.time}</span>
@@ -44,7 +56,14 @@ export default function Contact() {
             </ul>
           </div>
 
-          <a href={`tel:${clinic.phone}`} className="btn-secondary">
+          {settings.social_links?.length > 0 && (
+            <div className="mb-8">
+              <h2 className="text-xl text-teal-900 mb-3">Follow us</h2>
+              <SocialLinks links={settings.social_links} variant="light" />
+            </div>
+          )}
+
+          <a href={`tel:${settings.phone}`} className="btn-secondary">
             Call to book an appointment
           </a>
         </Reveal>
@@ -52,8 +71,8 @@ export default function Contact() {
         <Reveal delay={150}>
           <div className="rounded-xl overflow-hidden border border-teal-800/10 h-80 md:h-full min-h-[320px]">
             <iframe
-              title="Kantha Dental Care location"
-              src={clinic.mapEmbedSrc}
+              title={`${settings.business_name} location`}
+              src={mapEmbedSrc(settings.address)}
               className="w-full h-full"
               style={{ border: 0 }}
               loading="lazy"
@@ -61,7 +80,7 @@ export default function Contact() {
             />
           </div>
           <a
-            href={clinic.mapLink}
+            href={mapLink(settings.address)}
             target="_blank"
             rel="noreferrer"
             className="inline-block mt-3 text-sm text-teal-700 hover:text-teal-600"

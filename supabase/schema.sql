@@ -69,12 +69,21 @@ create policy "Authenticated can manage gallery photos"
   with check (auth.role() = 'authenticated');
 
 
--- 4. SITE SETTINGS TABLE (logo, hero background) ----------------------
--- Single-row table (id is always 1) holding site-wide branding.
+-- 4. SITE SETTINGS TABLE (logo, hero background, business info, hours, socials) ----
+-- Single-row table (id is always 1) holding all site-wide editable content.
 create table if not exists site_settings (
   id int primary key default 1,
   logo_url text,
   hero_bg_url text,
+  hero_bg_opacity int default 25,
+  hero_heading text,
+  hero_subtext text,
+  business_name text,
+  phone text,
+  email text,
+  address text,
+  hours jsonb default '[]'::jsonb,
+  social_links jsonb default '[]'::jsonb,
   updated_at timestamptz default now()
 );
 

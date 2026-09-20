@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { clinic, services } from '../lib/clinicInfo'
+import { services } from '../lib/clinicInfo'
 import { supabase } from '../lib/supabaseClient'
 import { useSiteSettings } from '../lib/useSiteSettings'
 import DoctorsGrid from '../components/DoctorsGrid'
 import Reveal from '../components/Reveal'
 import Counter from '../components/Counter'
+import { PhoneIcon } from '../components/icons'
 
 export default function Home() {
   const [doctors, setDoctors] = useState([])
@@ -38,7 +39,8 @@ export default function Home() {
             src={settings.hero_bg_url}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover opacity-25"
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ opacity: (settings.hero_bg_opacity ?? 25) / 100 }}
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900 via-teal-900/95 to-teal-900/70" />
@@ -46,17 +48,19 @@ export default function Home() {
         <div className="relative container-page grid md:grid-cols-2 gap-10 items-center py-16 md:py-24">
           <Reveal>
             <p className="text-gold-400 text-sm font-semibold tracking-wide mb-4">
-              Tondiarpet, Chennai
+              {settings.business_name}
             </p>
             <h1 className="text-4xl sm:text-5xl leading-[1.1] mb-6 text-sand">
-              Dental care that puts your whole family at ease.
+              {settings.hero_heading}
             </h1>
             <p className="text-sand/80 text-lg mb-8 max-w-prose">
-              From routine check-ups to root canals, braces and implants — Kantha Dental Care
-              brings modern treatment and honest advice to your neighbourhood.
+              {settings.hero_subtext}
             </p>
             <div className="flex flex-wrap gap-4">
-              <a href={`tel:${clinic.phone}`} className="btn-primary">Book by phone: {clinic.phoneDisplay}</a>
+              <a href={`tel:${settings.phone}`} className="btn-primary inline-flex items-center gap-2">
+                <PhoneIcon className="w-4 h-4" />
+                Book by Phone
+              </a>
               <Link to="/contact" className="btn-outline">Visit the clinic</Link>
             </div>
           </Reveal>
@@ -72,9 +76,7 @@ export default function Home() {
                 <div className="text-sm text-sand/70">Open a week, evening slots available</div>
               </div>
               <div className="bg-teal-800/60 border border-teal-700 rounded-xl p-6 col-span-2">
-                <div className="text-sm text-sand/70">
-                  Located on Thiruvottiyur High Road — easy to find, easy to reach.
-                </div>
+                <div className="text-sm text-sand/70">{settings.address}</div>
               </div>
             </div>
           </Reveal>
@@ -150,7 +152,7 @@ export default function Home() {
               </Link>
             </div>
           </Reveal>
-          <DoctorsGrid doctors={doctors} />
+          <DoctorsGrid doctors={doctors} compact />
         </section>
       )}
 
@@ -160,10 +162,11 @@ export default function Home() {
           <div className="container-page flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h2 className="text-3xl mb-2 text-sand">Ready to book your visit?</h2>
-              <p className="text-sand/90">Call us or drop by — we're on Thiruvottiyur High Road, Tondiarpet.</p>
+              <p className="text-sand/90">Call us or drop by — we're at {settings.address}.</p>
             </div>
-            <a href={`tel:${clinic.phone}`} className="btn-primary whitespace-nowrap">
-              Call {clinic.phoneDisplay}
+            <a href={`tel:${settings.phone}`} className="btn-primary whitespace-nowrap inline-flex items-center gap-2">
+              <PhoneIcon className="w-4 h-4" />
+              Call Now
             </a>
           </div>
         </Reveal>

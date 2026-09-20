@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-sand text-ink font-body antialiased;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display text-teal-900;
+}
+
+::selection {
+  background: #D0A24C;
+  color: #0A2E2B;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid #D0A24C;
+  outline-offset: 2px;
+}
+
+.container-page {
+  @apply max-w-6xl mx-auto px-5 sm:px-8;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-gold-500 text-teal-950 font-semibold px-6 py-3 rounded-sm hover:bg-gold-400 transition-colors;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 border border-teal-100/40 text-sand px-6 py-3 rounded-sm hover:bg-teal-800 transition-colors;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 border border-teal-700 text-teal-800 px-6 py-3 rounded-sm hover:bg-teal-50 transition-colors;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

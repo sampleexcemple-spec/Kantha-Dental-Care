@@ -37,7 +37,7 @@ export default function Dashboard() {
           <Link
             key={c.label}
             to={c.to}
-            className="border border-teal-800/10 rounded-sm p-6 bg-white/60 hover:border-teal-800/30 transition-colors"
+            className="border border-teal-800/10 rounded-xl p-6 bg-white/60 hover:border-teal-800/30 transition-colors"
           >
             <div className="text-3xl font-display text-teal-900 mb-1">{c.value}</div>
             <div className="text-sm text-ink/60">{c.label}</div>

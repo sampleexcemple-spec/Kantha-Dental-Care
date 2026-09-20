@@ -5,7 +5,8 @@ const links = [
   { to: '/admin', label: 'Overview', end: true },
   { to: '/admin/doctors', label: 'Doctors' },
   { to: '/admin/offers', label: 'Offers' },
-  { to: '/admin/gallery', label: 'Gallery Photos' }
+  { to: '/admin/gallery', label: 'Gallery Photos' },
+  { to: '/admin/settings', label: 'Site Settings' }
 ]
 
 export default function AdminLayout() {
@@ -38,7 +39,7 @@ export default function AdminLayout() {
               to={l.to}
               end={l.end}
               className={({ isActive }) =>
-                'px-4 py-2 rounded-sm text-sm whitespace-nowrap ' +
+                'px-4 py-2 rounded-xl text-sm whitespace-nowrap ' +
                 (isActive ? 'bg-teal-800 text-sand' : 'text-ink/70 hover:bg-teal-800/10')
               }
             >

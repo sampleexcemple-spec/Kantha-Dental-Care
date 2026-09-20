@@ -29,15 +29,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 bg-gold-500 text-teal-950 font-semibold px-6 py-3 rounded-sm hover:bg-gold-400 transition-colors;
+  @apply inline-flex items-center justify-center gap-2 bg-gold-500 text-teal-950 font-semibold px-6 py-3 rounded-xl hover:bg-gold-400 transition-colors;
 }
 
 .btn-outline {
-  @apply inline-flex items-center justify-center gap-2 border border-teal-100/40 text-sand px-6 py-3 rounded-sm hover:bg-teal-800 transition-colors;
+  @apply inline-flex items-center justify-center gap-2 border border-teal-100/40 text-sand px-6 py-3 rounded-xl hover:bg-teal-800 transition-colors;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 border border-teal-700 text-teal-800 px-6 py-3 rounded-sm hover:bg-teal-50 transition-colors;
+  @apply inline-flex items-center justify-center gap-2 border border-teal-700 text-teal-800 px-6 py-3 rounded-xl hover:bg-teal-50 transition-colors;
+}
+
+.clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {

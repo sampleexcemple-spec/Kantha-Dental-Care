@@ -97,7 +97,13 @@ Supabase — no code changes needed.
 
 ---
 
-## 6. Customizing clinic details
+## 6. If you already set up Supabase before this update
+
+This update added a `site_settings` table (for the logo and homepage background photo). If
+you already ran `supabase/schema.sql` once, don't re-run the whole file — instead run
+`supabase/update_2_site_settings.sql` in the SQL Editor, which only adds the new table.
+
+## 7. Customizing clinic details
 
 Business name, phone number, address, hours and the Google Map are all defined in one place:
 

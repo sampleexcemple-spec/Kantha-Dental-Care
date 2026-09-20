@@ -97,8 +97,8 @@ export default function ManageDoctors() {
         <div>
           <div className="grid sm:grid-cols-2 gap-4">
             {doctors.map((d) => (
-              <div key={d.id} className="border border-teal-800/10 rounded-sm p-4 bg-white/60 flex gap-4">
-                <div className="w-16 h-16 rounded-sm bg-teal-100 overflow-hidden flex-shrink-0">
+              <div key={d.id} className="border border-teal-800/10 rounded-xl p-4 bg-white/60 flex gap-4">
+                <div className="w-16 h-16 rounded-xl bg-teal-100 overflow-hidden flex-shrink-0">
                   {d.photo_url && <img src={d.photo_url} alt={d.name} className="w-full h-full object-cover" />}
                 </div>
                 <div className="flex-1">
@@ -119,7 +119,7 @@ export default function ManageDoctors() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="border border-teal-800/10 rounded-sm p-5 bg-white/70 h-fit space-y-3">
+        <form onSubmit={handleSubmit} className="border border-teal-800/10 rounded-xl p-5 bg-white/70 h-fit space-y-3">
           <h2 className="text-sm font-semibold text-teal-900 mb-2">
             {form.id ? 'Edit doctor' : 'Add a doctor'}
           </h2>
@@ -129,7 +129,7 @@ export default function ManageDoctors() {
               required
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full border border-teal-800/20 rounded-sm px-3 py-2 text-sm"
+              className="w-full border border-teal-800/20 rounded-xl px-3 py-2 text-sm"
             />
           </div>
           <div>
@@ -137,7 +137,7 @@ export default function ManageDoctors() {
             <input
               value={form.qualification}
               onChange={(e) => setForm({ ...form, qualification: e.target.value })}
-              className="w-full border border-teal-800/20 rounded-sm px-3 py-2 text-sm"
+              className="w-full border border-teal-800/20 rounded-xl px-3 py-2 text-sm"
             />
           </div>
           <div>
@@ -145,7 +145,7 @@ export default function ManageDoctors() {
             <input
               value={form.specialty}
               onChange={(e) => setForm({ ...form, specialty: e.target.value })}
-              className="w-full border border-teal-800/20 rounded-sm px-3 py-2 text-sm"
+              className="w-full border border-teal-800/20 rounded-xl px-3 py-2 text-sm"
             />
           </div>
           <div>
@@ -154,7 +154,7 @@ export default function ManageDoctors() {
               rows={3}
               value={form.bio}
               onChange={(e) => setForm({ ...form, bio: e.target.value })}
-              className="w-full border border-teal-800/20 rounded-sm px-3 py-2 text-sm"
+              className="w-full border border-teal-800/20 rounded-xl px-3 py-2 text-sm"
             />
           </div>
           <div>
@@ -163,7 +163,7 @@ export default function ManageDoctors() {
               type="number"
               value={form.sort_order}
               onChange={(e) => setForm({ ...form, sort_order: e.target.value })}
-              className="w-full border border-teal-800/20 rounded-sm px-3 py-2 text-sm"
+              className="w-full border border-teal-800/20 rounded-xl px-3 py-2 text-sm"
             />
           </div>
           <div>

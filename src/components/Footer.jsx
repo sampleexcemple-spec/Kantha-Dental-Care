@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { clinic } from '../lib/clinicInfo'
 
 export default function Footer() {
@@ -30,9 +29,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-sand/10">
-        <div className="container-page py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-sand/40">
-          <span>© {new Date().getFullYear()} Kantha Dental Care. All rights reserved.</span>
-          <Link to="/admin/login" className="hover:text-sand/70">Staff login</Link>
+        <div className="container-page py-5 text-center text-xs text-sand/40">
+          © {new Date().getFullYear()} Kantha Dental Care. All rights reserved.
         </div>
       </div>
     </footer>

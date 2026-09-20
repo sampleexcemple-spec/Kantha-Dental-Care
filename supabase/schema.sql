@@ -69,7 +69,28 @@ create policy "Authenticated can manage gallery photos"
   with check (auth.role() = 'authenticated');
 
 
--- 4. STORAGE BUCKET FOR PHOTOS ----------------------------------------
+-- 4. SITE SETTINGS TABLE (logo, hero background) ----------------------
+-- Single-row table (id is always 1) holding site-wide branding.
+create table if not exists site_settings (
+  id int primary key default 1,
+  logo_url text,
+  hero_bg_url text,
+  updated_at timestamptz default now()
+);
+
+alter table site_settings enable row level security;
+
+create policy "Public can view site settings"
+  on site_settings for select
+  using (true);
+
+create policy "Authenticated can manage site settings"
+  on site_settings for all
+  using (auth.role() = 'authenticated')
+  with check (auth.role() = 'authenticated');
+
+
+-- 5. STORAGE BUCKET FOR PHOTOS ----------------------------------------
 -- Create a public bucket called "media" (doctor photos, offer images, gallery photos)
 insert into storage.buckets (id, name, public)
 values ('media', 'media', true)

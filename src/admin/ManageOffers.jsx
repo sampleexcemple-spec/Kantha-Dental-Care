@@ -88,12 +88,12 @@ export default function ManageOffers() {
       <div className="grid lg:grid-cols-[1fr_320px] gap-8">
         <div className="grid sm:grid-cols-2 gap-4">
           {offers.map((o) => (
-            <div key={o.id} className="border border-teal-800/10 rounded-sm bg-white/60 overflow-hidden">
+            <div key={o.id} className="border border-teal-800/10 rounded-xl bg-white/60 overflow-hidden">
               {o.image_url && <img src={o.image_url} alt={o.title} className="w-full h-32 object-cover" />}
               <div className="p-4">
                 <div className="flex items-center justify-between mb-1">
                   <div className="font-medium text-teal-900">{o.title}</div>
-                  <span className={'text-xs px-2 py-0.5 rounded-sm ' + (o.active ? 'bg-teal-100 text-teal-800' : 'bg-ink/5 text-ink/40')}>
+                  <span className={'text-xs px-2 py-0.5 rounded-xl ' + (o.active ? 'bg-teal-100 text-teal-800' : 'bg-ink/5 text-ink/40')}>
                     {o.active ? 'Active' : 'Hidden'}
                   </span>
                 </div>
@@ -111,7 +111,7 @@ export default function ManageOffers() {
           {offers.length === 0 && <p className="text-ink/50 text-sm">No offers yet.</p>}
         </div>
 
-        <form onSubmit={handleSubmit} className="border border-teal-800/10 rounded-sm p-5 bg-white/70 h-fit space-y-3">
+        <form onSubmit={handleSubmit} className="border border-teal-800/10 rounded-xl p-5 bg-white/70 h-fit space-y-3">
           <h2 className="text-sm font-semibold text-teal-900 mb-2">
             {form.id ? 'Edit offer' : 'Add an offer'}
           </h2>
@@ -121,7 +121,7 @@ export default function ManageOffers() {
               required
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
-              className="w-full border border-teal-800/20 rounded-sm px-3 py-2 text-sm"
+              className="w-full border border-teal-800/20 rounded-xl px-3 py-2 text-sm"
             />
           </div>
           <div>
@@ -130,7 +130,7 @@ export default function ManageOffers() {
               rows={3}
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full border border-teal-800/20 rounded-sm px-3 py-2 text-sm"
+              className="w-full border border-teal-800/20 rounded-xl px-3 py-2 text-sm"
             />
           </div>
           <div>

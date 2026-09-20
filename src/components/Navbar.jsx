@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { clinic } from '../lib/clinicInfo'
+import { useSiteSettings } from '../lib/useSiteSettings'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -12,12 +13,21 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const { settings } = useSiteSettings()
 
   return (
     <header className="sticky top-0 z-40 bg-sand/90 backdrop-blur border-b border-teal-800/10">
       <div className="container-page flex items-center justify-between h-16">
         <NavLink to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="w-8 h-8 rounded-sm bg-teal-800 flex items-center justify-center text-gold-400 font-display font-semibold">K</span>
+          {settings.logo_url ? (
+            <span className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+              <img src={settings.logo_url} alt="Kantha Dental Care logo" className="w-full h-full object-cover" />
+            </span>
+          ) : (
+            <span className="w-8 h-8 rounded-xl bg-teal-800 flex items-center justify-center text-gold-400 font-display font-semibold">
+              K
+            </span>
+          )}
           <span className="font-display text-lg text-teal-900 leading-tight">Kantha Dental Care</span>
         </NavLink>
 

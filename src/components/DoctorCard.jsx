@@ -15,7 +15,7 @@ export default function DoctorCard({ doctor, compact = false }) {
           </div>
         )}
       </div>
-      <h3 className="text-xs sm:text-lg text-teal-900 mt-2 sm:mt-4 leading-tight">{doctor.name}</h3>
+      <h3 className="text-xs sm:text-base text-teal-900 mt-2 sm:mt-4 leading-tight">{doctor.name}</h3>
       {doctor.qualification && (
         <p className="text-[9px] sm:text-xs uppercase tracking-wide text-gold-600 mt-1">{doctor.qualification}</p>
       )}

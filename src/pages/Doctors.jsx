@@ -23,14 +23,14 @@ export default function Doctors() {
       <section className="bg-teal-900 text-sand py-14">
         <Reveal className="container-page">
           <p className="text-gold-400 text-sm font-semibold mb-3">Our Team</p>
-          <h1 className="text-4xl mb-4 text-sand">Meet the doctors</h1>
+          <h1 className="text-2xl sm:text-3xl mb-4 text-sand">Meet the doctors</h1>
           <p className="text-sand/80 max-w-prose">
             Experienced, approachable dentists who take the time to explain every treatment.
           </p>
         </Reveal>
       </section>
 
-      <section className="container-page py-16">
+      <section className="container-page py-12">
         {loading && <p className="text-ink/50">Loading doctor profiles…</p>}
         {!loading && doctors.length === 0 && (
           <p className="text-ink/50">Doctor profiles will appear here once added by the clinic admin.</p>

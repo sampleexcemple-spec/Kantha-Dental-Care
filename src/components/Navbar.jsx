@@ -28,7 +28,7 @@ export default function Navbar() {
               {settings.business_name?.[0] || 'K'}
             </span>
           )}
-          <span className="font-display text-lg text-teal-900 leading-tight truncate">
+          <span className="font-display text-base text-teal-900 leading-tight truncate">
             {settings.business_name}
           </span>
         </NavLink>

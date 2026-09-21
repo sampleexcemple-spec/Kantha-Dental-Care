@@ -23,20 +23,20 @@ export default function Gallery() {
       <section className="bg-teal-900 text-sand py-14">
         <Reveal className="container-page">
           <p className="text-gold-400 text-sm font-semibold mb-3">Gallery & Offers</p>
-          <h1 className="text-4xl mb-4 text-sand">Inside the clinic, and current offers</h1>
+          <h1 className="text-2xl sm:text-3xl mb-4 text-sand">Inside the clinic, and current offers</h1>
           <p className="text-sand/80 max-w-prose">
             A look at our clinic and the latest treatment offers — updated regularly.
           </p>
         </Reveal>
       </section>
 
-      <section className="container-page py-16">
-        <h2 className="text-2xl text-teal-900 mb-6">Current offers</h2>
+      <section className="container-page py-12">
+        <h2 className="text-lg sm:text-xl text-teal-900 mb-6">Current offers</h2>
         {loading && <p className="text-ink/50">Loading…</p>}
         {!loading && offers.length === 0 && (
-          <p className="text-ink/50 mb-10">No active offers right now — check back soon.</p>
+          <p className="text-ink/50 mb-6">No active offers right now — check back soon.</p>
         )}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {offers.map((o, i) => (
             <Reveal key={o.id} delay={i * 70}>
               <div className="bg-white rounded-xl overflow-hidden border border-teal-800/10 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
@@ -44,7 +44,7 @@ export default function Gallery() {
                   <img src={o.image_url} alt={o.title} className="w-full h-44 object-cover" />
                 )}
                 <div className="p-5">
-                  <h3 className="text-lg text-teal-900 mb-1">{o.title}</h3>
+                  <h3 className="text-sm sm:text-base text-teal-900 mb-1">{o.title}</h3>
                   <p className="text-sm text-ink/60">{o.description}</p>
                 </div>
               </div>
@@ -52,7 +52,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        <h2 className="text-2xl text-teal-900 mb-6">Clinic gallery</h2>
+        <h2 className="text-lg sm:text-xl text-teal-900 mb-6">Clinic gallery</h2>
         {!loading && photos.length === 0 && (
           <p className="text-ink/50">Photos of the clinic will appear here soon.</p>
         )}

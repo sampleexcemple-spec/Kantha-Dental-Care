@@ -45,15 +45,15 @@ export default function Home() {
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-teal-900 via-teal-900/95 to-teal-900/70" />
 
-        <div className="relative container-page grid md:grid-cols-2 gap-10 items-center py-16 md:py-24">
+        <div className="relative container-page grid md:grid-cols-2 gap-10 items-center py-14 md:py-20">
           <Reveal>
             <p className="text-gold-400 text-sm font-semibold tracking-wide mb-4">
               {settings.business_name}
             </p>
-            <h1 className="text-4xl sm:text-5xl leading-[1.1] mb-6 text-sand">
+            <h1 className="text-2xl sm:text-4xl leading-[1.2] mb-4 text-sand">
               {settings.hero_heading}
             </h1>
-            <p className="text-sand/80 text-lg mb-8 max-w-prose">
+            <p className="text-sand/80 text-sm sm:text-base mb-8 max-w-prose">
               {settings.hero_subtext}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -68,11 +68,11 @@ export default function Home() {
           <Reveal delay={150}>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-teal-800/60 border border-teal-700 rounded-xl p-6">
-                <Counter target={10} suffix="+" className="block text-3xl font-display text-gold-400 mb-1" />
+                <Counter target={10} suffix="+" className="block font-display text-gold-400 mb-1 text-xl sm:text-2xl" />
                 <div className="text-sm text-sand/70">Treatments offered under one roof</div>
               </div>
               <div className="bg-teal-800/60 border border-teal-700 rounded-xl p-6 mt-8">
-                <Counter target={6} suffix=" days" className="block text-3xl font-display text-gold-400 mb-1" />
+                <Counter target={6} suffix=" days" className="block font-display text-gold-400 mb-1 text-xl sm:text-2xl" />
                 <div className="text-sm text-sand/70">Open a week, evening slots available</div>
               </div>
               <div className="bg-teal-800/60 border border-teal-700 rounded-xl p-6 col-span-2">
@@ -84,11 +84,11 @@ export default function Home() {
       </section>
 
       {/* Services preview */}
-      <section className="container-page py-16 md:py-20">
+      <section className="container-page py-12 md:py-16">
         <Reveal>
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
+          <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
             <div>
-              <h2 className="text-3xl mb-2">Treatments we provide</h2>
+              <h2 className="text-xl sm:text-2xl mb-2">Treatments we provide</h2>
               <p className="text-ink/60 max-w-prose">
                 Comprehensive dental care for every age, from prevention to restoration.
               </p>
@@ -102,7 +102,7 @@ export default function Home() {
           {services.slice(0, 6).map((s, i) => (
             <Reveal key={s.title} delay={i * 70}>
               <div className="border border-teal-800/10 rounded-xl p-6 bg-white/60 hover:border-teal-800/30 hover:-translate-y-1 transition-all duration-300">
-                <h3 className="text-lg text-teal-900 mb-2">{s.title}</h3>
+                <h3 className="text-sm sm:text-base text-teal-900 mb-2">{s.title}</h3>
                 <p className="text-sm text-ink/60 leading-relaxed">{s.desc}</p>
               </div>
             </Reveal>
@@ -112,11 +112,11 @@ export default function Home() {
 
       {/* Offers */}
       {offers.length > 0 && (
-        <section className="bg-gold-100/60 py-16 md:py-20">
+        <section className="bg-gold-100/60 py-12 md:py-16">
           <div className="container-page">
             <Reveal>
-              <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-                <h2 className="text-3xl">Current offers</h2>
+              <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
+                <h2 className="text-xl sm:text-2xl">Current offers</h2>
                 <Link to="/gallery" className="text-teal-800 font-medium hover:text-teal-600">
                   See all →
                 </Link>
@@ -130,7 +130,7 @@ export default function Home() {
                       <img src={o.image_url} alt={o.title} className="w-full h-44 object-cover" />
                     )}
                     <div className="p-5">
-                      <h3 className="text-lg text-teal-900 mb-1">{o.title}</h3>
+                      <h3 className="text-sm sm:text-base text-teal-900 mb-1">{o.title}</h3>
                       <p className="text-sm text-ink/60">{o.description}</p>
                     </div>
                   </div>
@@ -143,10 +143,10 @@ export default function Home() {
 
       {/* Doctors preview */}
       {doctors.length > 0 && (
-        <section className="container-page py-16 md:py-20">
+        <section className="container-page py-12 md:py-16">
           <Reveal>
-            <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
-              <h2 className="text-3xl">Meet our doctors</h2>
+            <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
+              <h2 className="text-xl sm:text-2xl">Meet our doctors</h2>
               <Link to="/doctors" className="text-teal-800 font-medium hover:text-teal-600">
                 View all →
               </Link>
@@ -157,11 +157,11 @@ export default function Home() {
       )}
 
       {/* CTA */}
-      <section className="bg-teal-950 py-16">
+      <section className="bg-teal-950 py-12">
         <Reveal>
           <div className="container-page flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h2 className="text-3xl mb-2 text-sand">Ready to book your visit?</h2>
+              <h2 className="text-xl sm:text-2xl mb-2 text-sand">Ready to book your visit?</h2>
               <p className="text-sand/90">Call us or drop by — we're at {settings.address}.</p>
             </div>
             <a href={`tel:${settings.phone}`} className="btn-primary whitespace-nowrap inline-flex items-center gap-2">

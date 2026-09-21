@@ -12,23 +12,23 @@ export default function Contact() {
       <section className="bg-teal-900 text-sand py-14">
         <Reveal className="container-page">
           <p className="text-gold-400 text-sm font-semibold mb-3">Contact & Location</p>
-          <h1 className="text-4xl mb-4 text-sand">Visit {settings.business_name}</h1>
+          <h1 className="text-2xl sm:text-3xl mb-4 text-sand">Visit {settings.business_name}</h1>
           <p className="text-sand/80 max-w-prose">
             Call ahead or walk in during clinic hours — we're easy to find.
           </p>
         </Reveal>
       </section>
 
-      <section className="container-page py-16 grid md:grid-cols-2 gap-10">
+      <section className="container-page py-12 grid md:grid-cols-2 gap-10">
         <Reveal>
           <div className="mb-8">
-            <h2 className="text-xl text-teal-900 mb-2">Address</h2>
+            <h2 className="text-lg text-teal-900 mb-2">Address</h2>
             <p className="text-ink/70 leading-relaxed">{settings.address}</p>
           </div>
 
           <div className="mb-8">
-            <h2 className="text-xl text-teal-900 mb-2">Phone</h2>
-            <a href={`tel:${settings.phone}`} className="flex items-center gap-2 text-teal-700 text-lg hover:text-teal-600">
+            <h2 className="text-lg text-teal-900 mb-2">Phone</h2>
+            <a href={`tel:${settings.phone}`} className="flex items-center gap-2 text-teal-700 text-sm sm:text-base hover:text-teal-600">
               <PhoneIcon className="w-5 h-5" />
               {settings.phone}
             </a>
@@ -36,8 +36,8 @@ export default function Contact() {
 
           {settings.email && (
             <div className="mb-8">
-              <h2 className="text-xl text-teal-900 mb-2">Email</h2>
-              <a href={`mailto:${settings.email}`} className="flex items-center gap-2 text-teal-700 text-lg hover:text-teal-600">
+              <h2 className="text-lg text-teal-900 mb-2">Email</h2>
+              <a href={`mailto:${settings.email}`} className="flex items-center gap-2 text-teal-700 text-sm sm:text-base hover:text-teal-600">
                 <MailIcon className="w-5 h-5" />
                 {settings.email}
               </a>
@@ -45,7 +45,7 @@ export default function Contact() {
           )}
 
           <div className="mb-8">
-            <h2 className="text-xl text-teal-900 mb-2">Clinic hours</h2>
+            <h2 className="text-lg text-teal-900 mb-2">Clinic hours</h2>
             <ul className="text-ink/70 space-y-1">
               {settings.hours.map((h) => (
                 <li key={h.day} className="flex justify-between max-w-sm border-b border-teal-800/10 py-2">
@@ -58,7 +58,7 @@ export default function Contact() {
 
           {settings.social_links?.length > 0 && (
             <div className="mb-8">
-              <h2 className="text-xl text-teal-900 mb-3">Follow us</h2>
+              <h2 className="text-lg text-teal-900 mb-3">Follow us</h2>
               <SocialLinks links={settings.social_links} variant="light" />
             </div>
           )}

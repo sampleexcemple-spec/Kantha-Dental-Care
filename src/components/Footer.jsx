@@ -7,10 +7,10 @@ export default function Footer() {
   const { settings } = useSiteSettings()
 
   return (
-    <footer className="bg-teal-950 text-sand/80 mt-24">
+    <footer className="bg-teal-950 text-sand/80">
       <div className="container-page py-14 grid gap-10 sm:grid-cols-3">
         <div>
-          <div className="font-display text-xl text-sand mb-3">{settings.business_name}</div>
+          <div className="font-display text-lg text-sand mb-3">{settings.business_name}</div>
           <p className="text-sm leading-relaxed text-sand/60 mb-5">
             Family-focused dental care — modern treatment, honest advice.
           </p>

@@ -1,6 +1,7 @@
 // Fallback defaults, used only until the admin sets real values in Site Settings
 // (or if the site_settings row hasn't been created in Supabase yet).
 export const defaultClinic = {
+  theme: 'classic',
   business_name: 'Kantha Dental Care',
   phone: '07299044555',
   email: '',

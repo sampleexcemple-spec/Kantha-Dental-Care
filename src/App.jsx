@@ -19,6 +19,7 @@ import ManageDoctors from './admin/ManageDoctors'
 import ManageOffers from './admin/ManageOffers'
 import ManageGallery from './admin/ManageGallery'
 import ManageSettings from './admin/ManageSettings'
+import ThemeApplier from './components/ThemeApplier'
 
 function PublicLayout({ children }) {
   return (
@@ -37,6 +38,7 @@ export default function App() {
 
   return (
     <AuthProvider>
+      <ThemeApplier />
       {isAdmin ? (
         <Routes>
           <Route path="/admin/login" element={<Login />} />

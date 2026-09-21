@@ -99,13 +99,13 @@ Supabase — no code changes needed.
 
 ## 6. If you already set up Supabase before this update
 
-This update added editable business info. Run these in the SQL Editor, **in order**, only for
-the ones you haven't run yet:
+This update added editable business info and a theme system. Run these in the SQL Editor, **in
+order**, only for the ones you haven't run yet:
 
 1. `supabase/update_2_site_settings.sql` — adds the `site_settings` table (logo + hero photo).
-   Skip this if you already ran it before.
 2. `supabase/update_3_business_info.sql` — adds business name, phone, email, address, hours,
-   social links and homepage headline text, pre-filled with your current details.
+   social links and homepage headline text.
+3. `supabase/update_4_theme.sql` — adds the `theme` column used by the admin Theme picker.
 
 If you're setting up Supabase for the very first time, just run `supabase/schema.sql` — it
 already includes everything.

@@ -73,6 +73,7 @@ create policy "Authenticated can manage gallery photos"
 -- Single-row table (id is always 1) holding all site-wide editable content.
 create table if not exists site_settings (
   id int primary key default 1,
+  theme text default 'classic',
   logo_url text,
   hero_bg_url text,
   hero_bg_opacity int default 25,

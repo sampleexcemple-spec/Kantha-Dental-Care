@@ -10,6 +10,7 @@ export function useSiteSettings() {
     const { data } = await supabase.from('site_settings').select('*').eq('id', 1).maybeSingle()
     if (data) {
       setSettings({
+        theme: data.theme || defaultClinic.theme,
         business_name: data.business_name || defaultClinic.business_name,
         phone: data.phone || defaultClinic.phone,
         email: data.email || '',

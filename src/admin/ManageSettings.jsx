@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useSiteSettings } from '../lib/useSiteSettings'
 import { SOCIAL_PLATFORMS } from '../components/SocialLinks'
+import { THEMES } from '../lib/themes'
 
 async function uploadAndGetUrl(file, folder) {
   const ext = file.name.split('.').pop()
@@ -181,6 +182,20 @@ export default function ManageSettings() {
     }
   }
 
+  async function handleThemeSelect(themeKey) {
+    setBusy('theme')
+    setError('')
+    try {
+      await saveAll({ theme: themeKey })
+      setForm((f) => ({ ...f, theme: themeKey }))
+      flash('theme')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setBusy('')
+    }
+  }
+
   if (loading) {
     return <p className="text-ink/50">Loading settings…</p>
   }
@@ -195,6 +210,46 @@ export default function ManageSettings() {
       {error && <p className="text-sm text-red-600 mb-6">{error}</p>}
 
       <div className="space-y-8">
+        {/* Theme */}
+        <section className="border border-teal-800/10 rounded-2xl p-6 bg-white/70">
+          <h2 className="text-lg text-teal-900 mb-1">Theme</h2>
+          <p className="text-xs text-ink/50 mb-4">
+            Pick one color theme for the whole site. Only one can be active at a time — selecting
+            a theme applies it immediately.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {THEMES.map((t) => {
+              const active = (form.theme || 'classic') === t.key
+              return (
+                <button
+                  key={t.key}
+                  type="button"
+                  disabled={busy === 'theme'}
+                  onClick={() => handleThemeSelect(t.key)}
+                  className={
+                    'text-left rounded-xl border-2 p-4 transition-all duration-200 ' +
+                    (active
+                      ? 'border-teal-700 bg-teal-50 shadow-sm'
+                      : 'border-teal-800/10 hover:border-teal-800/30')
+                  }
+                >
+                  <div className="flex gap-1.5 mb-3">
+                    {t.swatches.map((c) => (
+                      <span key={c} className="w-6 h-6 rounded-full border border-black/10" style={{ background: c }} />
+                    ))}
+                  </div>
+                  <div className="text-sm font-medium text-teal-900 flex items-center gap-1.5">
+                    {t.label}
+                    {active && <span className="text-teal-700 text-xs">✓ Active</span>}
+                  </div>
+                  <div className="text-xs text-ink/50 mt-0.5">{t.desc}</div>
+                </button>
+              )
+            })}
+          </div>
+          {saved === 'theme' && <p className="text-xs text-teal-700 mt-3">Theme applied ✓</p>}
+        </section>
+
         {/* Branding */}
         <section className="border border-teal-800/10 rounded-2xl p-6 bg-white/70">
           <h2 className="text-lg text-teal-900 mb-4">Branding</h2>

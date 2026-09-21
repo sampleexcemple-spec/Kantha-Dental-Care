@@ -2,12 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   Theme palettes — the admin picks one in Site Settings, which
+   sets data-theme on <html>. Only one is active at a time.
+   ============================================================ */
+
+/* Classic Teal & Gold (default) */
+:root {
+  --c-primary-950: 10 46 43;
+  --c-primary-900: 13 59 55;
+  --c-primary-800: 15 79 74;
+  --c-primary-700: 20 107 99;
+  --c-primary-600: 27 133 119;
+  --c-primary-100: 223 239 234;
+  --c-primary-50: 242 248 246;
+  --c-accent-600: 184 134 59;
+  --c-accent-500: 208 162 76;
+  --c-accent-400: 224 185 97;
+  --c-accent-100: 250 241 222;
+  --c-ink: 18 32 30;
+  --c-sand: 251 249 245;
+}
+
+/* Emerald & Gold */
+:root[data-theme="emerald-gold"] {
+  --c-primary-950: 11 43 29;
+  --c-primary-900: 16 56 35;
+  --c-primary-800: 20 73 45;
+  --c-primary-700: 27 97 57;
+  --c-primary-600: 35 123 72;
+  --c-primary-100: 223 240 228;
+  --c-primary-50: 241 249 243;
+  --c-accent-600: 184 134 59;
+  --c-accent-500: 208 162 76;
+  --c-accent-400: 224 185 97;
+  --c-accent-100: 250 241 222;
+  --c-ink: 18 32 26;
+  --c-sand: 250 249 242;
+}
+
+/* Pistachio & Beige */
+:root[data-theme="pistachio-beige"] {
+  --c-primary-950: 43 51 38;
+  --c-primary-900: 56 66 47;
+  --c-primary-800: 76 90 61;
+  --c-primary-700: 102 120 79;
+  --c-primary-600: 127 148 99;
+  --c-primary-100: 233 238 223;
+  --c-primary-50: 245 247 239;
+  --c-accent-600: 169 139 94;
+  --c-accent-500: 194 165 117;
+  --c-accent-400: 211 188 143;
+  --c-accent-100: 244 235 220;
+  --c-ink: 42 42 34;
+  --c-sand: 250 248 241;
+}
+
+/* Royal Blue & Cream */
+:root[data-theme="royal-blue-cream"] {
+  --c-primary-950: 11 31 77;
+  --c-primary-900: 16 42 99;
+  --c-primary-800: 22 55 132;
+  --c-primary-700: 30 72 168;
+  --c-primary-600: 44 91 196;
+  --c-primary-100: 220 230 250;
+  --c-primary-50: 241 245 253;
+  --c-accent-600: 166 136 58;
+  --c-accent-500: 194 165 80;
+  --c-accent-400: 212 188 114;
+  --c-accent-100: 247 239 217;
+  --c-ink: 16 24 38;
+  --c-sand: 251 248 240;
+}
+
+/* Blush & White */
+:root[data-theme="blush-white"] {
+  --c-primary-950: 61 20 32;
+  --c-primary-900: 79 27 43;
+  --c-primary-800: 107 36 57;
+  --c-primary-700: 140 48 75;
+  --c-primary-600: 173 65 95;
+  --c-primary-100: 246 220 228;
+  --c-primary-50: 252 238 242;
+  --c-accent-600: 201 138 156;
+  --c-accent-500: 219 165 180;
+  --c-accent-400: 231 190 201;
+  --c-accent-100: 251 234 239;
+  --c-ink: 43 20 24;
+  --c-sand: 255 255 255;
+}
+
+/* Midnight Futuristic */
+:root[data-theme="midnight-futuristic"] {
+  --c-primary-950: 5 8 12;
+  --c-primary-900: 10 15 23;
+  --c-primary-800: 16 24 37;
+  --c-primary-700: 24 34 51;
+  --c-primary-600: 34 49 69;
+  --c-primary-100: 217 230 242;
+  --c-primary-50: 238 244 250;
+  --c-accent-600: 8 145 168;
+  --c-accent-500: 23 180 206;
+  --c-accent-400: 79 211 232;
+  --c-accent-100: 218 247 252;
+  --c-ink: 10 15 20;
+  --c-sand: 245 248 250;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
   @apply bg-sand text-ink font-body antialiased;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 h1, h2, h3, h4 {
@@ -15,12 +123,12 @@ h1, h2, h3, h4 {
 }
 
 ::selection {
-  background: #D0A24C;
-  color: #0A2E2B;
+  background: rgb(var(--c-accent-500));
+  color: rgb(var(--c-primary-950));
 }
 
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 2px solid #D0A24C;
+  outline: 2px solid rgb(var(--c-accent-500));
   outline-offset: 2px;
 }
 

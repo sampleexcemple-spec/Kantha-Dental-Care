@@ -4,23 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
+        // These read from CSS variables (set per-theme in index.css) so the admin
+        // can switch the whole site's palette at runtime without a rebuild.
         teal: {
-          950: '#0A2E2B',
-          900: '#0D3B37',
-          800: '#0F4F4A',
-          700: '#146B63',
-          600: '#1B8577',
-          100: '#DFEFEA',
-          50: '#F2F8F6'
+          950: 'rgb(var(--c-primary-950) / <alpha-value>)',
+          900: 'rgb(var(--c-primary-900) / <alpha-value>)',
+          800: 'rgb(var(--c-primary-800) / <alpha-value>)',
+          700: 'rgb(var(--c-primary-700) / <alpha-value>)',
+          600: 'rgb(var(--c-primary-600) / <alpha-value>)',
+          100: 'rgb(var(--c-primary-100) / <alpha-value>)',
+          50: 'rgb(var(--c-primary-50) / <alpha-value>)'
         },
         gold: {
-          600: '#B8863B',
-          500: '#D0A24C',
-          400: '#E0B961',
-          100: '#FAF1DE'
+          600: 'rgb(var(--c-accent-600) / <alpha-value>)',
+          500: 'rgb(var(--c-accent-500) / <alpha-value>)',
+          400: 'rgb(var(--c-accent-400) / <alpha-value>)',
+          100: 'rgb(var(--c-accent-100) / <alpha-value>)'
         },
-        ink: '#12201E',
-        sand: '#FBF9F5'
+        ink: 'rgb(var(--c-ink) / <alpha-value>)',
+        sand: 'rgb(var(--c-sand) / <alpha-value>)'
       },
       fontFamily: {
         display: ['"Fraunces"', 'serif'],

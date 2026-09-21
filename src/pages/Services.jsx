@@ -1,6 +1,7 @@
 import { services } from '../lib/clinicInfo'
 import { useSiteSettings } from '../lib/useSiteSettings'
 import Reveal from '../components/Reveal'
+import ServicesGrid from '../components/ServicesGrid'
 import { PhoneIcon } from '../components/icons'
 
 export default function Services() {
@@ -20,16 +21,7 @@ export default function Services() {
       </section>
 
       <section className="container-page py-12">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 60}>
-              <div className="border border-teal-800/10 rounded-xl p-6 bg-white/60 hover:border-teal-800/30 hover:-translate-y-1 transition-all duration-300">
-                <h2 className="text-sm sm:text-base text-teal-900 mb-2">{s.title}</h2>
-                <p className="text-sm text-ink/60 leading-relaxed">{s.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <ServicesGrid services={services} />
 
         <Reveal>
           <div className="mt-14 bg-gold-100/60 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">

@@ -4,6 +4,7 @@ import { services } from '../lib/clinicInfo'
 import { supabase } from '../lib/supabaseClient'
 import { useSiteSettings } from '../lib/useSiteSettings'
 import DoctorsGrid from '../components/DoctorsGrid'
+import ServicesGrid from '../components/ServicesGrid'
 import Reveal from '../components/Reveal'
 import Counter from '../components/Counter'
 import { PhoneIcon } from '../components/icons'
@@ -98,16 +99,7 @@ export default function Home() {
             </Link>
           </div>
         </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.slice(0, 6).map((s, i) => (
-            <Reveal key={s.title} delay={i * 70}>
-              <div className="border border-teal-800/10 rounded-xl p-6 bg-white/60 hover:border-teal-800/30 hover:-translate-y-1 transition-all duration-300">
-                <h3 className="text-sm sm:text-base text-teal-900 mb-2">{s.title}</h3>
-                <p className="text-sm text-ink/60 leading-relaxed">{s.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        <ServicesGrid services={services.slice(0, 6)} />
       </section>
 
       {/* Offers */}
